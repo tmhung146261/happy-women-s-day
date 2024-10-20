@@ -17,26 +17,12 @@
     <script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
 
     <style>
-        .rounded-blink {
-            border-radius: 50%;
-            /* Bo tròn hình ảnh */
-            animation: blink 1s infinite;
-            /* Hiệu ứng nhấp nháy */
-        }
-
-        /* Tạo hiệu ứng nhấp nháy */
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-                /* Hiển thị */
-            }
-
-            50% {
-                opacity: 0;
-                /* Ẩn */
-            }
+        .youtube-audio iframe {
+            width: 0px;
+            /* Ẩn khung video */
+            height: 0px;
+            /* Ẩn khung video */
+            visibility: hidden;
         }
     </style>
 
@@ -44,9 +30,16 @@
 
 <body>
 
-    <audio autoplay>
+    <!-- <audio autoplay>
         <source src="music/nhac1.mp3" type="audio/mp3" />
-    </audio>
+    </audio> -->
+
+    <div class="youtube-audio" style="display: none;">
+        <iframe id="ytAudio" width="1" height="1" src="https://www.youtube.com/embed/ekr2nIex040?autoplay=1"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+
 
 
 
@@ -65,8 +58,7 @@
                             anh.</span><br>
                         <span class="say">Mãi yêu em và mãi bên cạnh em. </span><br>
                         <span class="say"><span class="space">
-                                <img  width="448px" height="440px" src="image/test.jpg"
-                                    alt="Rounded and Blinking Image">
+                                <img width="448px" height="440px" src="image/test.jpg" alt="Rounded and Blinking Image">
                                 <br>
                                 <span class="say"><span class="space"><img width="100px" height="100px"
                                             src="image/tym.png" alt=""><br>
@@ -143,6 +135,9 @@
             var hold = 1;
 
             canvas.click(function (e) {
+                document.querySelector(".youtube-audio").style.display = "block";
+                var audio = document.getElementById("ytAudio");
+                audio.src = "https://www.youtube.com/embed/o_lN37OAJ9U?autoplay=1";
                 var offset = canvas.offset(), x, y;
                 x = e.pageX - offset.left;
                 y = e.pageY - offset.top;
